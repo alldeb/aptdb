@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/res">
+        <file>icon-apt.svg</file>
+    </qresource>
+</RCC>
