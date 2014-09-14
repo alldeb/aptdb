@@ -20,33 +20,72 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string>Distro</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QComboBox" name="comboBox">
+      <item>
+       <property name="text">
+        <string>Ubuntu</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Debian</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Linux Mint</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>304</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="1" column="0">
      <widget class="QLabel" name="label">
       <property name="text">
        <string>Lokasi file list</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="1">
+    <item row="1" column="1" colspan="2">
      <widget class="QLineEdit" name="lokasiFileList"/>
     </item>
-    <item row="0" column="2">
+    <item row="1" column="3">
      <widget class="QPushButton" name="buttonAptList">
       <property name="text">
        <string>Cari</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="0">
+    <item row="2" column="0">
      <widget class="QLabel" name="label_2">
       <property name="text">
        <string>Lokasi simpan</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="1">
+    <item row="2" column="1" colspan="2">
      <widget class="QLineEdit" name="lokasiSimpan"/>
     </item>
-    <item row="1" column="2">
+    <item row="2" column="3">
      <widget class="QPushButton" name="buttonSimpan">
       <property name="text">
        <string>Cari</string>
@@ -54,16 +93,16 @@
      </widget>
     </item>
     <item row="3" column="0" colspan="3">
-     <widget class="QListView" name="listView"/>
-    </item>
-    <item row="4" column="2">
-     <widget class="QPushButton" name="buttonBuat">
+     <widget class="QLabel" name="label_3">
       <property name="text">
-       <string>Buat</string>
+       <string>Klik file yang akan diubah menjadi CSV</string>
       </property>
      </widget>
     </item>
-    <item row="4" column="0" colspan="2">
+    <item row="4" column="0" colspan="4">
+     <widget class="QListView" name="listView"/>
+    </item>
+    <item row="5" column="0" colspan="3">
      <widget class="QProgressBar" name="progressBar">
       <property name="value">
        <number>0</number>
@@ -73,10 +112,10 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="0" colspan="2">
-     <widget class="QLabel" name="label_3">
+    <item row="5" column="3">
+     <widget class="QPushButton" name="buttonBuat">
       <property name="text">
-       <string>Pilih file yang akan diubah menjadi CSV:</string>
+       <string>Buat</string>
       </property>
      </widget>
     </item>

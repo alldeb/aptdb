@@ -78,7 +78,7 @@ void Aptdb::on_buttonBuat_clicked()
 
 void Aptdb::on_buttonAptList_clicked()
 {
-    QString dir = QFileDialog::getExistingDirectory(this, tr("Choose Location"),
+    QString dir = QFileDialog::getExistingDirectory(this, tr("Choose Source Directory"),
                                                     ui->lokasiFileList->text(),
                                                     QFileDialog::ShowDirsOnly
                                                     | QFileDialog::DontResolveSymlinks);
@@ -91,7 +91,7 @@ void Aptdb::on_buttonAptList_clicked()
 
 void Aptdb::on_buttonSimpan_clicked()
 {
-    QString dir = QFileDialog::getExistingDirectory(this, tr("Choose Location"),
+    QString dir = QFileDialog::getExistingDirectory(this, tr("Choose Saving Location"),
                                                     ui->lokasiSimpan->text(),
                                                     QFileDialog::ShowDirsOnly
                                                     | QFileDialog::DontResolveSymlinks);
@@ -121,8 +121,29 @@ void Aptdb::ubahKeCsv(QString filename, QString location)
     else if(filename.contains("multiverse")){
         componen = "Multiverse";
     }
+    else if(filename.contains("contrib")){
+        componen = "Contrib";
+    }
+    else if(filename.contains("non-free")){
+        componen = "Non-Free";
+    }
+    else if(filename.contains("partner")){
+        componen = "Partner";
+    }
+    else if(filename.contains("upstream")){
+        componen = "Upstream";
+    }
+    else if(filename.contains("import")){
+        componen = "Import";
+    }
     QStringList kriteria;
-    kriteria << "Package: " << "Depends: " << "Recommends: " << "Filename: " << "Size: ";
+    if(ui->comboBox->currentIndex() == 1){
+        kriteria << "Package: " << "Depends: " << "Recommends: " << "Size: " << "Filename: ";
+    }
+    else
+    {
+        kriteria << "Package: " << "Depends: " << "Recommends: " << "Filename: " << "Size: ";
+    }
     QByteArray tulisBaru;
     if(teksSumber.open(QIODevice::ReadOnly | QIODevice::Text))
     {
@@ -131,8 +152,9 @@ void Aptdb::ubahKeCsv(QString filename, QString location)
         while(!baca.atEnd())
         {
             baris = baca.readLine();
-            bool versi;
-            bool depen;
+            bool versi = false;
+            bool depen = false;
+            //int urut = 0;
             if(baris.startsWith("Version"))
             {
                 versi = true;
@@ -191,6 +213,11 @@ void Aptdb::ubahKeCsv(QString filename, QString location)
 
                     tulisBaru.append(kalimat);
                 }
+//                else if(baris.startsWith("\n"))
+//                {
+//                    kalimat.append(componen);
+//                    kalimat.append("\n");
+//                }
                 kalimat.clear();
             }
             ui->progressBar->setValue(ui->progressBar->value()+1);
